@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import MemberType from "../types/Member";
+import MemberType from "../types/MemberType";
 
 const initialState: MemberType = {id: "a"};
 
@@ -12,6 +12,7 @@ const memberSlice = createSlice({
         }
     }
 });
+
 
 export const memberActions = memberSlice.actions;
 export default memberSlice.reducer;

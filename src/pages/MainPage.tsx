@@ -1,8 +1,11 @@
 import Text from "../components/atoms/Text";
+import MainLayout from "../layouts/MainLayout";
 
 const MainPage: React.FC = () => {
   return (
-    <Text>hello</Text>
+    <MainLayout>
+      <Text>hello</Text>
+    </MainLayout>
   );
 }
 
