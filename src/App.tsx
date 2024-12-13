@@ -3,7 +3,6 @@ import { RouterProvider } from "react-router-dom";
 import store from "./stores/Store";
 import router from "./routers/Router";
 import GlobalStyles from "./styles/GlobalStyles";
-import { memberActions } from "./stores/MemberSlice";
 
 const App = () => {
   return (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Display, AlignItems, FlexDirection, JustifyContent, FlexWrap, Gap } from "../../types/StyleType";
+import { Display, AlignItems, FlexDirection, JustifyContent, FlexWrap, Gap } from "../../types/Style";
 import { ReactNode } from "react";
 
 interface ContainerProps {
@@ -14,30 +14,38 @@ interface ContainerProps {
 
 interface StyledContainerProps {
     $display: Display;
-    $direction: FlexDirection;
-    $align: AlignItems;
-    $justify: JustifyContent;
-    $wrap: FlexWrap;
-    $gap: Gap;
+    $direction?: FlexDirection;
+    $align?: AlignItems;
+    $justify?: JustifyContent;
+    $wrap?: FlexWrap;
+    $gap?: Gap;
 };
 
+const GapSizes = {
+    "verysmall": "5px",
+    "small": "10px",
+    "medium": "20px",
+    "large": "30px",
+    "huge": "40px"
+} as const;
+
 const StyledContainer = styled.div<StyledContainerProps>`
-    display: ${(props) => props.$display};
-    flex-direction: ${(props) => props.$direction};
-    justify-content: ${(props) => props.$justify};
-    align-items: ${(props) => props.$align};
-    flex-wrap: ${(props) => props.$wrap};
-    gap: ${(props) => props.$gap};
+    display: ${({ $display }) => $display};
+    flex-direction: ${({ $direction }) => $direction};
+    justify-content: ${({ $justify }) => $justify};
+    align-items: ${({ $align }) => $align};
+    flex-wrap: ${({ $wrap }) => $wrap};
+    gap: ${({ $gap }) => $gap ? GapSizes[$gap] : ""};
 `;
 
 const Container: React.FC<ContainerProps> = ({
     children,
     display = "flex",
-    direction = "row",
-    align = "stretch",
-    justify = "normal",
-    wrap = "nowrap",
-    gap = 0
+    direction,
+    align,
+    justify,
+    wrap,
+    gap,
 }) => {
     return (
         <StyledContainer

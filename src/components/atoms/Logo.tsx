@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 interface LogoProps {
     isWhite?: boolean
-    size?: number
+    size?   : number
 }
 
 interface StyledLogoProps {
@@ -10,7 +10,7 @@ interface StyledLogoProps {
 }
 
 const StyledLogo = styled.img<StyledLogoProps>`
-    width: ${(props) => props.$size}px;
+    width       : ${(props) => props.$size}px;
     aspect-ratio: 1 / 1;
 `;
 
