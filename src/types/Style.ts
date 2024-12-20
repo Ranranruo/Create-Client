@@ -1,3 +1,6 @@
+// attribute
+export type Src = `http${string}` | `/${string}`;
+
 // position
 export type Position = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
 export type Top = `${string}px` | `${string}%` | `${string}em` | `${string}rem`;
