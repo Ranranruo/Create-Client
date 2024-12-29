@@ -9,12 +9,12 @@ export type Bottom = `${string}px` | `${string}%` | `${string}em` | `${string}re
 export type Left = `${string}px` | `${string}%` | `${string}em` | `${string}rem`;
 
 // scale
-export type Width = `${string}px` | `${string}%` | `${string}vw` | `${string}em` | `${string}rem`;
-export type Height = `${string}px` | `${string}%` | `${string}vh` | `${string}em` | `${string}rem`;
-export type MaxWidth = `${string}px` | `${string}%` | `${string}vw` | `${string}em` | `${string}rem`;
-export type MaxHeight = `${string}px` | `${string}%` | `${string}vh` | `${string}em` | `${string}rem`;
-export type MinWidth = `${string}px` | `${string}%` | `${string}vw` | `${string}em` | `${string}rem`;
-export type MinHeight = `${string}px` | `${string}%` | `${string}vh` | `${string}em` | `${string}rem`;
+export type Width = `${string}px` | `${string}%` | `${string}vw` | `${string}em` | `${string}rem` | `calc(${string})`;
+export type Height = `${string}px` | `${string}%` | `${string}vh` | `${string}em` | `${string}rem` | `calc(${string})`;
+export type MaxWidth = `${string}px` | `${string}%` | `${string}vw` | `${string}em` | `${string}rem` | `calc(${string})`;
+export type MaxHeight = `${string}px` | `${string}%` | `${string}vh` | `${string}em` | `${string}rem` | `calc(${string})`;
+export type MinWidth = `${string}px` | `${string}%` | `${string}vw` | `${string}em` | `${string}rem` | `calc(${string})`;
+export type MinHeight = `${string}px` | `${string}%` | `${string}vh` | `${string}em` | `${string}rem` | `calc(${string})`;
 
 // flex
 export type Display = "flex" | "block" | "inline-block" | "inline";

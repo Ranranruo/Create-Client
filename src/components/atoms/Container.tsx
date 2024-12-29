@@ -35,7 +35,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
     justify-content: ${({ $justify }) => $justify};
     align-items: ${({ $align }) => $align};
     flex-wrap: ${({ $wrap }) => $wrap};
-    gap: ${({ $gap }) => $gap ? GapSizes[$gap] : ""};
+    gap: ${({ $gap }) => $gap ? GapSizes[$gap]: ""};
 `;
 
 const Container: React.FC<ContainerProps> = ({

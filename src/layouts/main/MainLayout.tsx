@@ -1,4 +1,4 @@
-import Logo from "../components/atoms/Logo";
+import styled from "styled-components";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -7,9 +7,8 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <>
-
+    
       {children}
-      <Logo />
     </>
   );
 };
