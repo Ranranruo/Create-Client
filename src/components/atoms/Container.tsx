@@ -1,58 +1,69 @@
 import styled from "styled-components";
-import { Display, AlignItems, FlexDirection, JustifyContent, FlexWrap, Gap } from "../../types/Style";
-import { ReactNode } from "react";
+import { Display, AlignItems, FlexDirection, JustifyContent, FlexWrap, Gap } from "../../types/styles/Property";
+import { ReactElement } from "react";
+import { ClassName, Id } from "../../types/ComponentType";
+import cn from "classnames";
+
 
 interface ContainerProps {
-    children: ReactNode,
+    children: ReactElement | ReactElement[];
+    id?: Id;
+    className?: ClassName;
     display?: Display;
     direction?: FlexDirection;
-    align?: AlignItems;
-    justify?: JustifyContent;
+    alignItems?: AlignItems;
+    justifyContent?: JustifyContent;
     wrap?: FlexWrap;
     gap?: Gap;
 };
 
 interface StyledContainerProps {
+    id?: Id;
+    className: ClassName;
     $display: Display;
     $direction?: FlexDirection;
-    $align?: AlignItems;
-    $justify?: JustifyContent;
+    $alignItems?: AlignItems;
+    $justifyContent?: JustifyContent;
     $wrap?: FlexWrap;
     $gap?: Gap;
 };
 
 const GapSizes = {
-    "verysmall": "5px",
-    "small": "10px",
-    "medium": "20px",
-    "large": "30px",
-    "huge": "40px"
+    "verysmall": "--gap-spacing-verysmall",
+    "small": "--gap-spacing-small",
+    "medium": "--gap-spacing-medium",
+    "large": "--gap-spacing-large",
+    "huge": "--gap-spacing-huge"
 } as const;
 
 const StyledContainer = styled.div<StyledContainerProps>`
     display: ${({ $display }) => $display};
     flex-direction: ${({ $direction }) => $direction};
-    justify-content: ${({ $justify }) => $justify};
-    align-items: ${({ $align }) => $align};
+    justify-content: ${({ $justifyContent }) => $justifyContent};
+    align-items: ${({ $alignItems }) => $alignItems};
     flex-wrap: ${({ $wrap }) => $wrap};
-    gap: ${({ $gap }) => $gap ? GapSizes[$gap]: ""};
+    gap: ${({ $gap }) => $gap ? `var(${GapSizes[$gap]})` : ""};
 `;
 
 const Container: React.FC<ContainerProps> = ({
     children,
+    id,
+    className,
     display = "flex",
     direction,
-    align,
-    justify,
+    alignItems,
+    justifyContent,
     wrap,
     gap,
 }) => {
     return (
         <StyledContainer
+            id={id}
+            className={cn("container", className)}
             $display={display}
             $direction={direction}
-            $align={align}
-            $justify={justify}
+            $alignItems={alignItems}
+            $justifyContent={justifyContent}
             $wrap={wrap}
             $gap={gap}
         >

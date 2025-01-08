@@ -1,9 +1,13 @@
 import { styled } from "styled-components";
-import { AlignItems, Display, FontSize, FontWeight, JustifyContent } from "../../types/Style";
+import { AlignItems, Display, FontSize, FontWeight, JustifyContent } from "../../types/styles/Property";
+import { ClassName, Id } from "../../types/ComponentType";
+import cn from "classnames";
 
 interface ContentProps {
   children: string;
-  size?: FontSize;
+  id?: Id;
+  className?: ClassName;
+  fontSize?: FontSize;
   weight?: FontWeight;
   display?: Display;
   justify?: JustifyContent;
@@ -11,7 +15,9 @@ interface ContentProps {
 }
 
 interface StyledContentProps {
-  $size: FontSize;
+  id?: Id;
+  className: ClassName;
+  $fontSize: FontSize;
   $weight?: FontWeight;
   $display?: Display;
   $justify?: JustifyContent;
@@ -19,17 +25,17 @@ interface StyledContentProps {
 }
 
 const FontSizes = {
-  "verysmall": "0.75em",
-  "small": "0.88em",
-  "medium": "1em",
-  "large": "1.13em",
-  "huge": "1.50em"
+  "verysmall": "--font-size-content-verysmall",
+  "small": "--font-size-content-small",
+  "medium": "--font-size-content-medium",
+  "large": "--font-size-content-large",
+  "huge": "--font-size-content-huge",
 } as const;
 
 
 const StyledContent = styled.p<StyledContentProps>`
   font-family: 'Cookie';
-  font-size: ${({ $size }) => FontSizes[$size]};
+  font-size: ${({ $fontSize }) => `var(${FontSizes[$fontSize]})`};
   font-weight: ${({ $weight }) => $weight};
   display: ${({ $display }) => $display};
   justify-content: ${({ $justify }) => $justify};
@@ -38,7 +44,9 @@ const StyledContent = styled.p<StyledContentProps>`
 
 const Content: React.FC<ContentProps> = ({
   children,
-  size = "medium",
+  id,
+  className,
+  fontSize = "medium",
   weight,
   display,
   justify,
@@ -46,7 +54,9 @@ const Content: React.FC<ContentProps> = ({
 }) => {
   return (
     <StyledContent
-      $size={size}
+      id={id}
+      className={cn("content", className)}
+      $fontSize={fontSize}
       $weight={weight}
       $display={display}
       $justify={justify}

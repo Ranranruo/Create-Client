@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const Fonts = createGlobalStyle`
+const Font = createGlobalStyle`
   @font-face {
     font-family: 'Cookie';
     font-weight: 400;
@@ -18,4 +18,4 @@ const Fonts = createGlobalStyle`
   }
 `;
 
-export default Fonts;
+export default Font;

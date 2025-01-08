@@ -1,11 +1,13 @@
-import Fonts from "./Fonts";
+import Font from "./Font";
 import Reset from "./Reset";
+import Variable from "./Variable";
 
 const GlobalStyles: React.FC = () => {
   return (
     <>
-      <Fonts />
       <Reset />
+      <Font />
+      <Variable />
     </>
   );
 };

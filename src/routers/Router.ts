@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainPage from "../pages/MainPage";
+import { Suspense, lazy } from "react";
+
+const MainPage = lazy(() => import("../pages/MainPage"));
 
 const router = createBrowserRouter([
   {

@@ -1,36 +1,48 @@
 import { styled } from "styled-components";
-import { AlignItems, Display, FontSize, FontWeight, JustifyContent } from "../../types/Style";
+import { AlignItems, Color, Display, FontSize, FontWeight, JustifyContent } from "../../types/styles/Property";
+import { ClassName, Id } from "../../types/ComponentType";
+import cn from "classnames";
+import { To } from "react-router-dom";
 
 interface TitleProps {
   children: string;
-  size?: FontSize;
+  href?: To;
+  id?: Id;
+  className?: ClassName;
+  fontSize?: FontSize;
   weight?: FontWeight;
+  color?: Color;
   display?: Display;
   justify?: JustifyContent;
   align?: AlignItems;
 }
 
 interface StyledTitleProps {
-  $size: FontSize;
+  href?: To;
+  id?: Id;
+  className: ClassName;
+  $fontSize: FontSize;
   $weight?: FontWeight;
+  $color?: Color;
   $display?: Display;
   $justify?: JustifyContent;
   $align?: AlignItems;
 }
 
 const FontSizes = {
-  "verysmall": "1.25em",
-  "small": "1.50em",
-  "medium": "1.875em",
-  "large": "2.215em",
-  "huge": "2.625"
+  "verysmall": "--font-size-title-verysmall", // 1.25em -> 20px
+  "small": "--font-size-title-small", // 1.50em -> 24px
+  "medium": "--font-size-title-medium", // 1.875em -> 30px
+  "large": "--font-size-title-large", // 2.25em -> 36px
+  "huge": "--font-size-title-huge" // 2.625em -> 42px
 } as const;
 
 
 const StyledTitle = styled.p<StyledTitleProps>`
   font-family: 'Cookie';
-  font-size: ${({ $size }) => FontSizes[$size]};
+  font-size: ${({ $fontSize }) => `var(${FontSizes[$fontSize]})`};
   font-weight: ${({ $weight }) => $weight};
+  color: ${({$color}) => `var(--color-${$color})`};
   display: ${({ $display }) => $display};
   justify-content: ${({ $justify }) => $justify};
   align-items: ${({ $align }) => $align};
@@ -38,21 +50,26 @@ const StyledTitle = styled.p<StyledTitleProps>`
 
 const Title: React.FC<TitleProps> = ({
   children,
-  size = "medium",
+  href,
+  className,
+  fontSize = "medium",
   weight,
+  color,
   display,
   justify,
   align,
 }) => {
   return (
     <StyledTitle
-      $size={size}
-      $weight={weight}
-      $display={display}
-      $justify={justify}
-      $align={align}
+      className={cn("title", className)}
+      $color={ color }
+      $fontSize={ fontSize }
+      $weight={ weight }
+      $display={ display }
+      $justify={ justify }
+      $align={ align }
     >
-      {children}
+      { children }
     </StyledTitle>
   )
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MainHeader from "./MainHeader";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -7,7 +8,7 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <>
-    
+      <MainHeader />
       {children}
     </>
   );

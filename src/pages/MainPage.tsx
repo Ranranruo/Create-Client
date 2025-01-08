@@ -1,16 +1,9 @@
-import Container from "../components/atoms/Container";
-import Text from "../components/atoms/Content";
 import MainLayout from "../layouts/main/MainLayout";
-import Title from "../components/atoms/Title";
 
 const MainPage: React.FC = () => {
   return (
     <MainLayout>
-      <Title>제목</Title>
-      <Text>안녕</Text>
-      <Container>
-        <Text>a</Text>
-      </Container>
+      a
     </MainLayout>
   );
 }
